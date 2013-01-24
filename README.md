@@ -17,3 +17,5 @@ Example:
 
     var distance = vincenty.distVincenty(30.5, -100.6, 31.7, -101.8);
     console.log(distance);
+
+$ 17551.816
