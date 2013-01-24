@@ -9,13 +9,13 @@ The module exports one function distVincenty(lat1, long1, lat2, long2) which acc
 
 Install:
 
-npm install node-vincenty
+  npm install node-vincenty
 
 Example:
 
-var vincenty = require('vincenty');
+  var vincenty = require('vincenty');
 
-var distance = vincenty.distVincenty(30.5, -100.6, 31.7, -101.8);
-console.log(distance);
+  var distance = vincenty.distVincenty(30.5, -100.6, 31.7, -101.8);
+  console.log(distance);
 
 $ 175518.816
