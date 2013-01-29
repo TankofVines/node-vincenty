@@ -1,7 +1,7 @@
 node-vincenty
 =============
 
-Repacked some vanilla js that calculates metric distance between two latitude and longitude coordinates based on Chris Vereen's script here:
+Repackaged some vanilla js that calculates metric distance between two latitude and longitude coordinates based on Chris Vereen's script here:
 
 http://www.movable-type.co.uk/scripts/latlong-vincenty.html
 
