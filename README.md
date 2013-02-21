@@ -5,7 +5,7 @@ Repackaged some vanilla js that calculates metric distance between two latitude 
 
 http://www.movable-type.co.uk/scripts/latlong-vincenty.html
 
-The module exports one function distVincenty(lat1, long1, lat2, long2) which accepts four parameters representing the latitude and longitude of the input coordinates.
+The module exports one function distVincenty(lat1, long1, lat2, long2, callback) which accepts four parameters representing the latitude and longitude of the input coordinates.
 
 Install:
 
@@ -15,7 +15,8 @@ Example:
 
     var vincenty = require('node-vincenty');
 
-    var distance = vincenty.distVincenty(30.5, -100.6, 31.7, -101.8);
-    console.log(distance);
+    vincenty.distVincenty(30.5, -100.6, 31.7, -101.8, function(distance){
+    	console.log(distance);
+    });
 
 $ 17551.816
