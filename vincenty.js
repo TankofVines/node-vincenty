@@ -8,7 +8,7 @@ function toDeg(Value) {
   return Value * 180 / Math.PI;
 }
 
-function distVincenty(lat1, lon1, lat2, lon2) {
+function distVincenty(lat1, lon1, lat2, lon2, callback) {
   var a = 6378137,
   	b = 6356752.314245,
   	f = 1 / 298.257223563;  // WGS-84 ellipsoid params
@@ -47,7 +47,7 @@ function distVincenty(lat1, lon1, lat2, lon2) {
   var s = b*A*(sigma-deltaSigma);
   
   s = s.toFixed(3); // round to 1mm precision
-  return s;
+  callback(s);
   
   // note: to return initial/final bearings in addition to distance, use something like:
   var fwdAz = Math.atan2(cosU2*sinLambda,  cosU1*sinU2-sinU1*cosU2*cosLambda);
