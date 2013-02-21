@@ -1,0 +1,22 @@
+{
+  "name": "node-vincenty",
+  "version": "0.0.2",
+  "description": "Calculates the distance in meters between two latitude and longitude coordinates.",
+  "main": "vincenty.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kas673/node-vincenty.git"
+  },
+  "keywords": [
+    "vincenty",
+    "distance",
+    "latitude",
+    "longitude"
+  ],
+  "author": "Kevin Stofan",
+  "license": "BSD",
+  "gitHead": "33be75631a9cdbb81203e7ac2c25df384e108227"
+}
