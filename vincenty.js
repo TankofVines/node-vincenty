@@ -73,7 +73,7 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
  * @param   {Number} dist: distance along bearing in metres
  * @returns (LatLon} destination point
  */
-function destVincenty(lat1, lon1, brng, dist) {
+function destVincenty(lat1, lon1, brng, dist, callback) {
   var a = 6378137, b = 6356752.3142,  f = 1/298.257223563;  // WGS-84 ellipsiod
   var s = dist;
   var alpha1 = toRad(brng);
@@ -111,7 +111,11 @@ function destVincenty(lat1, lon1, brng, dist) {
 
   var revAz = Math.atan2(sinAlpha, -tmp);  // final bearing, if required
 
-  return { lat: toDeg(lat2), lon: toDeg(lon2), finalBearing: toDeg(revAz) };
+  var result = { lat: toDeg(lat2), lon: toDeg(lon2), finalBearing: toDeg(revAz) };
+
+  callback(result);
+
+  return result;
 }
 
 exports.distVincenty = distVincenty;
