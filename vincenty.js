@@ -55,12 +55,22 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
   var s = b*A*(sigma-deltaSigma);
 
   s = s.toFixed(3); // round to 1mm precision
-  callback(s);
 
   // note: to return initial/final bearings in addition to distance, use something like:
   var fwdAz = Math.atan2(cosU2*sinLambda,  cosU1*sinU2-sinU1*cosU2*cosLambda);
   var revAz = Math.atan2(cosU1*sinLambda, -sinU1*cosU2+cosU1*sinU2*cosLambda);
-  return { distance: s, initialBearing: toDeg(fwdAz), finalBearing: toDeg(revAz) };
+  var result = { distance: s, initialBearing: toDeg(fwdAz), finalBearing: toDeg(revAz) };
+
+  if (callback !== undefined && callback instanceof Function) {
+    if (callback.length === 3) {
+      callback(result.distance, result.initialBearing, result.finalBearing);
+    }
+    else {
+      callback(result.distance);
+    }
+  }
+
+  return result;
 }
 
 
@@ -113,7 +123,14 @@ function destVincenty(lat1, lon1, brng, dist, callback) {
 
   var result = { lat: toDeg(lat2), lon: toDeg(lon2), finalBearing: toDeg(revAz) };
 
-  callback(result);
+  if (callback !== undefined && callback instanceof Function) {
+    if (callback.length === 3) {
+      callback(result.lat, result.lon, result.finalBearing);
+    }
+    else {
+      callback(result);
+    }
+  }
 
   return result;
 }
