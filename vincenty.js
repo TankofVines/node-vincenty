@@ -76,11 +76,11 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
 function destVincenty(lat1, lon1, brng, dist) {
   var a = 6378137, b = 6356752.3142,  f = 1/298.257223563;  // WGS-84 ellipsiod
   var s = dist;
-  var alpha1 = brng.toRad();
+  var alpha1 = toRad(brng);
   var sinAlpha1 = Math.sin(alpha1);
   var cosAlpha1 = Math.cos(alpha1);
 
-  var tanU1 = (1-f) * Math.tan(lat1.toRad());
+  var tanU1 = (1-f) * Math.tan(toRad(lat1));
   var cosU1 = 1 / Math.sqrt((1 + tanU1*tanU1)), sinU1 = tanU1*cosU1;
   var sigma1 = Math.atan2(tanU1, cosAlpha1);
   var sinAlpha = cosU1 * sinAlpha1;
@@ -107,11 +107,12 @@ function destVincenty(lat1, lon1, brng, dist) {
   var C = f/16*cosSqAlpha*(4+f*(4-3*cosSqAlpha));
   var L = lambda - (1-C) * f * sinAlpha *
       (sigma + C*sinSigma*(cos2SigmaM+C*cosSigma*(-1+2*cos2SigmaM*cos2SigmaM)));
-  var lon2 = (lon1.toRad()+L+3*Math.PI)%(2*Math.PI) - Math.PI;  // normalise to -180...+180
+  var lon2 = (toRad(lon1)+L+3*Math.PI)%(2*Math.PI) - Math.PI;  // normalise to -180...+180
 
   var revAz = Math.atan2(sinAlpha, -tmp);  // final bearing, if required
 
-  return { lat: lat2.toDeg(), lon: lon2.toDeg(), finalBearing: revAz.toDeg() };
+  return { lat: toDeg(lat2), lon: toDeg(lon2), finalBearing: toDeg(revAz) };
 }
 
 exports.distVincenty = distVincenty;
+exports.destVincenty = destVincenty;
