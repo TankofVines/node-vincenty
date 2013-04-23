@@ -42,6 +42,7 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
           callback(result.distance);
         }
       }
+      return result;
     };  // co-incident points
     var cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda;
     var sigma = Math.atan2(sinSigma, cosSigma);

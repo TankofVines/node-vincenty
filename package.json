@@ -1,6 +1,6 @@
 {
   "name": "node-vincenty",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Calculates the distance in meters between two latitude and longitude coordinates.",
   "main": "vincenty.js",
   "scripts": {
