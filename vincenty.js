@@ -32,7 +32,17 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
     var sinLambda = Math.sin(lambda), cosLambda = Math.cos(lambda);
     var sinSigma = Math.sqrt((cosU2*sinLambda) * (cosU2*sinLambda) +
       (cosU1*sinU2-sinU1*cosU2*cosLambda) * (cosU1*sinU2-sinU1*cosU2*cosLambda));
-    if (sinSigma==0) return 0;  // co-incident points
+    if (sinSigma==0) {
+      var result = { distance: 0, initialBearing: 0, finalBearing: 0 };
+      if (callback !== undefined && callback instanceof Function) {
+        if (callback.length === 3) {
+          callback(result.distance, result.initialBearing, result.finalBearing);
+        }
+        else {
+          callback(result.distance);
+        }
+      }
+    };  // co-incident points
     var cosSigma = sinU1*sinU2 + cosU1*cosU2*cosLambda;
     var sigma = Math.atan2(sinSigma, cosSigma);
     var sinAlpha = cosU1 * cosU2 * sinLambda / sinSigma;
@@ -54,7 +64,7 @@ function distVincenty(lat1, lon1, lat2, lon2, callback) {
     B/6*cos2SigmaM*(-3+4*sinSigma*sinSigma)*(-3+4*cos2SigmaM*cos2SigmaM)));
   var s = b*A*(sigma-deltaSigma);
 
-  s = s.toFixed(3); // round to 1mm precision
+  s = Number(s.toFixed(3)); // round to 1mm precision
 
   // note: to return initial/final bearings in addition to distance, use something like:
   var fwdAz = Math.atan2(cosU2*sinLambda,  cosU1*sinU2-sinU1*cosU2*cosLambda);
