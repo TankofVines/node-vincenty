@@ -22,7 +22,7 @@ Examples:
 
     // these are synchronous
     console.log( vincenty.distVincenty(30.5, -100.6, 31.7, -101.8) );
-    console.log( vincenty.destVincenty(30.5, -100.6, 175518.816, -40.4035) );
+    console.log( vincenty.destVincenty(30.5, -100.6, -40.4035, 175518.816) );
 
     // these are asynchronous
     vincenty.distVincenty(30.5, -100.6, 31.7, -101.8, function (distance) {
@@ -33,7 +33,7 @@ Examples:
         console.log(distance, initialBearing, finalBearing);
     });
 
-    vincenty.destVincenty(30.5, -100.6, 175518.816, -40.4035, function (lat, lon, finalBearing) {
+    vincenty.destVincenty(30.5, -100.6, -40.4035, 175518.816, function (lat, lon, finalBearing) {
         console.log(lat, lon, finalBearing);
     });
 
